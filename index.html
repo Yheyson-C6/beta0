@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Soluciones PELA - Mantenimiento e Instalaciones en Servicios Generales</title>
+        <style>
+            :root {
+                --primary-color: #0056b3;
+                --secondary-color: #004080;
+                --accent-color: #e00000;
+                --light-gray: #f5f5f5;
+                --dark-gray: #75797b;
+                --text-color: #106fe5;
+                --white: #fff;
+            }
+            
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            
+            body {
+                color: var(--text-color);
+                line-height: 1.6;
+            }
+            
+            header {
+                background-color: var(--white);
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                position: fixed;
+                width: 100%;
+                z-index: 1000;
+            }
+            
+            .container {
+                width: 90%;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 15px;
+            }
+            
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 0;
+            }
+            
+            .logo {
+                font-size: 24px;
+                font-weight: 700;
+                color: var(--primary-color);
+            }
+            
+            .nav-links {
+                display: flex;
+                list-style: none;
+            }
+            
+            .nav-links li {
+                margin-left: 30px;
+            }
+            
+            .nav-links a {
+                text-decoration: none;
+                color: var(--dark-gray);
+                font-weight: 500;
+                transition: color 0.3s;
+            }
+            
+            .nav-links a:hover {
+                color: var(--primary-color);
+            }
+            
+            .mobile-menu {
+                display: none;
+                cursor: pointer;
+            }
+            
+            .hero {
+                background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/600') center/cover no-repeat;
+                height: 90vh;
+                display: flex;
+                align-items: center;
+                text-align: center;
+                color: var(--white);
+                padding-top: 80px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+                margin-bottom: 20px;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+                margin-bottom: 30px;
+            }
+            
+            .btn {
+                display: inline-block;
+                background-color: var(--accent-color);
+                color: var(--white);
+                padding: 12px 30px;
+                border-radius: 5px;
+                text-decoration: none;
+                font-weight: 600;
+                transition: background-color 0.3s;
+            }
+            
+            .btn:hover {
+                background-color: #c80000;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-title {
+                text-align: center;
+                font-size: 2rem;
+                margin-bottom: 50px;
+                color: var(--primary-color);
+            }
+            
+            .highlights {
+                background-color: var(--light-gray);
+            }
+            
+            .highlights-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 30px;
+            }
+            
+            .highlight-item {
+                flex: 1 1 250px;
+                max-width: 300px;
+                background-color: var(--white);
+                padding: 30px;
+                border-radius: 5px;
+                box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+                text-align: center;
+            }
+            
+            .highlight-item i {
+                font-size: 2.5rem;
+                color: var(--accent-color);
+                margin-bottom: 20px;
+            }
+            
+            .highlight-item h3 {
+                margin-bottom: 15px;
+                color: var(--secondary-color);
+            }
+            
+            .about {
+                background-color: var(--white);
+            }
+            
+            .about-content {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+            
+            .about-text {
+                flex: 1 1 500px;
+                padding: 0 20px;
+            }
+            
+            .about-text h2 {
+                color: var(--secondary-color);
+                margin-bottom: 20px;
+            }
+            
+            .about-text p {
+                margin-bottom: 15px;
+            }
+            
+            .about-image {
+                flex: 1 1 400px;
+                padding: 0 20px;
+            }
+            
+            .about-image img {
+                width: 100%;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            
+            .values {
+                background-color: var(--light-gray);
+            }
+            
+            .values-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 30px;
+            }
+            
+            .value-item {
+                flex: 1 1 250px;
+                max-width: 300px;
+                background-color: var(--white);
+                padding: 30px;
+                border-radius: 5px;
+                box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+                text-align: center;
+            }
+            
+            .value-item i {
+                font-size: 2.5rem;
+                color: var(--primary-color);
+                margin-bottom: 20px;
+            }
+            
+            .value-item h3 {
+                margin-bottom: 15px;
+                color: var(--secondary-color);
+            }
+            
+            .services {
+                background-color: var(--white);
+            }
+            
+            .services-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 30px;
+            }
+            
+            .service-category {
+                flex: 1 1 500px;
+                max-width: 550px;
+                margin-bottom: 40px;
+            }
+            
+            .service-category h3 {
+                color: var(--secondary-color);
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid var(--accent-color);
+            }
+            
+            .service-item {
+                margin-bottom: 15px;
+                padding: 15px;
+                background-color: var(--light-gray);
+                border-radius: 5px;
+            }
+            
+            .projects {
+                background-color: var(--light-gray);
+            }
+            
+            .projects-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 30px;
+            }
+            
+            .project-item {
+                flex: 1 1 350px;
+                max-width: 380px;
+                background-color: var(--white);
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+                margin-bottom: 30px;
+            }
+            
+            .project-image {
+                height: 220px;
+                background-size: cover;
+                background-position: center;
+            }
+            
+            .project-content {
+                padding: 20px;
+            }
+            
+            .project-content h3 {
+                color: var(--secondary-color);
+                margin-bottom: 10px;
+            }
+            
+            .project-content p {
+                margin-bottom: 15px;
+            }
+            
+            .contact {
+                background-color: var(--white);
+            }
+            
+            .contact-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 40px;
+            }
+            
+            .contact-info {
+                flex: 1 1 300px;
+            }
+            
+            .contact-info h3 {
+                color: var(--secondary-color);
+                margin-bottom: 20px;
+            }
+            
+            .contact-detail {
+                display: flex;
+                align-items: flex-start;
+                margin-bottom: 20px;
+            }
+            
+            .contact-detail i {
+                font-size: 1.2rem;
+                color: var(--accent-color);
+                margin-right: 15px;
+                min-width: 20px;
+            }
+            
+            .contact-form {
+                flex: 1 1 500px;
+            }
+            
+            .form-group {
+                margin-bottom: 20px;
+            }
+            
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: 500;
+            }
+            
+            .form-control {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size: 1rem;
+            }
+            
+            textarea.form-control {
+                height: 150px;
+                resize: vertical;
+            }
+            
+            .btn-submit {
+                background-color: var(--primary-color);
+                color: var(--white);
+                border: none;
+                padding: 12px 30px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 1rem;
+                font-weight: 600;
+                transition: background-color 0.3s;
+            }
+            
+            .btn-submit:hover {
+                background-color: var(--secondary-color);
+            }
+            
+            footer {
+                background-color: var(--dark-gray);
+                color: var(--white);
+                padding: 60px 0 20px;
+            }
+            
+            .footer-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: 40px;
+                margin-bottom: 40px;
+            }
+            
+            .footer-section {
+                flex: 1 1 300px;
+            }
+            
+            .footer-section h3 {
+                font-size: 1.2rem;
+                margin-bottom: 20px;
+                color: var(--accent-color);
+            }
+            
+            .footer-links {
+                list-style: none;
+            }
+            
+            .footer-links li {
+                margin-bottom: 10px;
+            }
+            
+            .footer-links a {
+                color: var(--white);
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+            
+            .footer-links a:hover {
+                color: var(--accent-color);
+            }
+            
+            .copyright {
+                text-align: center;
+                padding-top: 20px;
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            @media (max-width: 768px) {
+                .nav-links {
+                    display: none;
+                    position: absolute;
+                    top: 80px;
+                    left: 0;
+                    right: 0;
+                    background-color: var(--white);
+                    flex-direction: column;
+                    align-items: center;
+                    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                }
+                
+                .nav-links.active {
+                    display: flex;
+                }
+                
+                .nav-links li {
+                    margin: 15px 0;
+                }
+                
+                .mobile-menu {
+                    display: block;
+                }
+                
+                .hero-content h1 {
+                    font-size: 2rem;
+                }
+                
+                .section {
+                    padding: 60px 0;
+                }
+                
+                .section-title {
+                    font-size: 1.8rem;
+                }
+            }
+            
+            .text-center {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            
+            .scroll-top {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                background-color: var(--primary-color);
+                color: var(--white);
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            }
+            
+            .scroll-top.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .scroll-top:hover {
+                background-color: var(--secondary-color);
+            }
+
+            
+            .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.2;
+            width: 900px; /* Ajustable */
+            z-index: 0;
+        }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div class="container">
+                <nav class="navbar">
+                    <div class="logo">SOLUCIONES PELA</div>
+                    <ul class="nav-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#proyectos">Proyectos</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                    <div class="mobile-menu">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </nav>
+            </div>
+        </header>
+    
+        <section id="inicio" class="hero">
+            <div class="watermark">
+                <img src="imagenes Soluciones PELA/Logo.jpg" alt="Logo marca de agua" style="width: 100%;">
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Soluciones Integrales en Infraestructuras,Mantenimiento e Instalaciones de Equipos Electromecanicos para Entidades Publicas y Privadas</h1>
+                    <p>Especialistas en mantenimiento e instalaciones electromecanicas, infraestructura y servicios generales a nivel nacional</p>
+                    <a href="#contacto" class="btn">Solicite una cotización sin compromiso</a>
+                </div>
+            </div>
+        </section>
+    
+        <section class="highlights section">
+            <div class="container">
+                <h2 class="section-title">Nuestros Destacados</h2>
+                <div class="highlights-container">
+                    <div class="highlight-item">
+                        <i class="fas fa-medal"></i> 
+                        <h3>Experiencia</h3>
+                        <p>Más de 5 años de experiencia en el sector</p>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-building"></i>
+                        <h3>Confianza</h3>
+                        <p>Servicio a importantes instituciones públicas y privadas</p>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-user-tie"></i>
+                        <h3>Profesionalismo</h3>
+                        <p>Personal técnico altamente calificado</p>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Seguridad</h3>
+                        <p>Compromiso con la seguridad y el medio ambiente</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section id="nosotros" class="about section">
+            <div class="container">
+                <h2 class="section-title">Nosotros</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>¿Quiénes somos?</h2>
+                        <p>SOLUCIONES PELA es una empresa con presencia activa en el desarrollo de proyectos y Servicios generales. A conveniencia de nuestros clientes, hemos desarrollado proyectos en diversas modalidades, con o sin financiamiento. Ofrecemos nuestros servicios a nivel nacional, poniendo a disposición un equipo de profesionales, ingenieros y técnicos altamente especializados y de gran experiencia.</p>
+                        <p>Estamos comprometidos a ser una empresa sostenible a través de un proceso de mejora continua, cuidando a nuestros clientes, trabajadores y medio ambiente.</p>
+                        
+                        <h2>Misión</h2>
+                        <p>SOLUCIONES PELA es una empresa de Servicio que proporciona soluciones integrales a sus clientes, con especial atención, aportando valor a sus accionistas, clientes y empleados mediante su modelo de gestión, con énfasis en la responsabilidad social y contribución al desarrollo sostenible.</p>
+                        
+                        <h2>Visión</h2>
+                        <p>Ser reconocidos como la mejor empresa de servicios, en base a nuestro factor humano, políticas de calidad, seguridad y medio ambiente, cumpliendo a cabalidad y puntualidad todos nuestros compromisos.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="imagenes Soluciones PELA/grupoS_PELA.jpg" alt="Equipo de Soluciones PELA">
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section class="values section">
+            <div class="container">
+                <h2 class="section-title">Nuestros Valores</h2>
+                <div class="values-container">
+                    <div class="value-item">
+                        <i class="fas fa-users"></i>
+                        <h3>Trabajo en equipo</h3>
+                        <p>Fortalecemos la integración de nuestros colaboradores para alcanzar objetivos institucionales e individuales.</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Excelencia e innovación</h3>
+                        <p>Buscamos la perfección en todas nuestras acciones, innovando continuamente para alcanzar objetivos en tiempo récord.</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Responsabilidad social y ambiental</h3>
+                        <p>Trabajamos en armonía con nuestro entorno, cuidando el medio ambiente en todas nuestras actividades.</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Entrega de resultados</h3>
+                        <p>Contamos con personal altamente capacitado, orientado a la autosuperación y competencia personal.</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Rentabilidad y confianza</h3>
+                        <p>Desarrollamos nuestra actividad orientados a alcanzar rentabilidad y confianza absoluta de nuestros clientes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section id="servicios" class="services section">
+            <div class="container">
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <p class="text-center">En SOLUCIONES PELA ofrecemos servicios especializados de mantenimiento e instalaciones para empresas e instituciones. Nuestro compromiso es brindar soluciones eficientes y de calidad, cumpliendo los más altos estándares de seguridad.</p>
+                <div class="services-container">
+                    <div class="service-category">
+                        <h3><i class="fas fa-plug"></i> Servicios eléctricos</h3>
+                        <div class="service-item">
+                            <p>Mantenimiento e instalaciones eléctricas</p>
+                        </div>
+                        <div class="service-item">
+                            <p>Mantenimiento preventivo y correctivo de grupos electrógenos</p>
+                        </div>
+                        <div class="service-item">
+                            <p>Servicios de inspección de línea eléctrica</p>
+                        </div>
+                    </div>
+                    
+                    <div class="service-category">
+                        <h3><i class="fas fa-industry"></i> Estructuras metálicas</h3>
+                        <div class="service-item">
+                            <p>Construcción de estructuras metálicas</p>
+                        </div>
+                        <div class="service-item">
+                            <p>Reparación de estructuras metálicas</p>
+                        </div>
+                        <div class="service-item">
+                            <p>Mantenimiento de estructuras metálicas</p>
+                        </div>
+                    </div>
+                    
+                    <div class="service-category">
+                        <h3><i class="fas fa-paint-roller"></i> Servicios de pintado</h3>
+                        <div class="service-item">
+                            <p>Pintado de edificaciones</p>
+                        </div>
+                        <div class="service-item">
+                            <p>Pintado de estructuras metálicas con pintura epóxica</p>
+                        </div>
+                        <div class="service-item">
+                            <p>Aplicación de pintura industrial especializada</p>
+                        </div>
+                    </div>
+                    
+                    <div class="service-category">
+                        <h3><i class="fas fa-tools"></i> Equipos y sistemas</h3>
+                        <div class="service-item">
+                            <p>Mantenimiento preventivo y correctivo de aire acondicionado</p>
+                        </div>
+                        <div class="service-item">
+                            <p>Mantenimiento preventivo y correctivo de calderas</p>
+                        </div>
+                        <div class="service-item">
+                            <p>Mantenimiento preventivo y correctivo de equipos de cocina</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section id="proyectos" class="projects section">
+            <div class="container">
+                <h2 class="section-title">Proyectos Destacados</h2>
+                <p class="text-center">Conozca algunos de los proyectos destacados realizados por SOLUCIONES PELA para importantes instituciones públicas y privadas.</p>
+                <div class="projects-container">
+                    <div class="project-item">
+                        <div class="project-image" style="background-image: url('imagenes\ Soluciones\ PELA/Hospital.jpg');"></div>
+                        <div class="project-content">
+                            <h3>Hospital Nacional Hipólito Unanue:</h3>
+                            <p><strong>Proyecto:</strong> Servicio de confección e instalación de 28 repisas de acero inoxidable</p>
+                            <p>Fabricación e instalación de repisas para optimizar espacios de almacenamiento en ambientes hospitalarios, cumpliendo con las normativas de sanidad.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-image" style="background-image: url('imagenes\ Soluciones\ PELA/Hospital_Militar.jpg');"></div>
+                        <div class="project-content">
+                            <h3>Hospital Militar Central (IAFAS):</h3>
+                            <p><strong>Proyecto:</strong> Servicio de pintado exterior e interior de ambientes de tanques hidroneumáticos y electrobombas</p>
+                            <p>Trabajos de acondicionamiento y mantenimiento de infraestructura crítica para el suministro de agua.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-image" style="background-image: url('imagenes\ Soluciones\ PELA/UNT.jpg');"></div>
+                        <div class="project-content">
+                            <h3>Universidad Nacional de Trujillo:</h3>
+                            <p><strong>Proyecto 1:</strong> Servicio de mantenimiento preventivo de equipos de cocina</p>
+                            <p><strong>Proyecto 2:</strong> Servicio de pintura y mantenimiento de equipos de aire acondicionado</p>
+                            <p>Mantenimiento integral de equipamiento para garantizar la operatividad continua de los servicios universitarios.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-image" style="background-image: url('imagenes\ Soluciones\ PELA/FAP.jpg');"></div>
+                        <div class="project-content">
+                            <h3>Fuerza Aérea del Perú (FAP):</h3>
+                            <p><strong>Proyecto:</strong> Servicio de pintura de equipos de grupos electrógenos</p>
+                            <p>Trabajos especializados de mantenimiento para garantizar la durabilidad y protección de equipos críticos.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-image" style="background-image: url('imagenes\ Soluciones\ PELA/Varios.jpg');"></div>
+                        <div class="project-content">
+                            <h3>OTROS SERVICIOS:</h3>
+                            <p><strong>Proyecto:</strong> Servicio de pintado exterior e interior de oficinas y ambientes</p>
+                            <p>Acondicionamiento y mejora estética de espacios de trabajo, mejorando el ambiente laboral.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section id="contacto" class="contact section">
+            <div class="container">
+                <h2 class="section-title">Contacto</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Información de contacto</h3>
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <p>Jr. Gaminides 292, Urb. Gaminides, San Juan de Lurigancho, Lima</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <p>+51 916097041</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <p>jlbustamantebernal@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <p>Lunes a viernes de 8:00 am a 6:00 pm</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-id-card"></i>
+                            <div>
+                                <p>RUC: 10720243763</p>
+                                <p>Gerente General: José Luis Bustamante Bernal</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3>Formulario de contacto</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" id="nombre" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="empresa">Empresa</label>
+                                <input type="text" id="empresa" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Correo electrónico</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" id="telefono" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="servicio">Servicio de interés</label>
+                                <select id="servicio" class="form-control" required>
+                                    <option value="">Seleccione un servicio</option>
+                                    <option value="electrico">Servicios eléctricos</option>
+                                    <option value="estructuras">Estructuras metálicas</option>
+                                    <option value="pintado">Servicios de pintado</option>
+                                    <option value="equipos">Equipos y sistemas</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="mensaje">Mensaje</label>
+                                <textarea id="mensaje" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">Enviar mensaje</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <footer>
+            <div class="container">
+                <div class="footer-container">
+                    <div class="footer-section">
+                        <h3>SOLUCIONES PELA</h3>
+                        <p>Comprometidos con la calidad, seguridad y el medio ambiente, brindando soluciones integrales a nivel nacional.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Enlaces rápidos</h3>
+                        <ul>
+                            <li><a href="#inicio">Inicio</a></li>
+                            <li><a href="#nosotros">Nosotros</a></li>
+                            <li><a href="#servicios">Servicios</a></li>
+                            <li><a href="#proyectos">Proyectos</a></li>
+                            <li><a href="#contacto">Contacto</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Redes Sociales</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 SOLUCIONES PELA. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
