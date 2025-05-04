@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DECLARACION</title>
+  <link rel="icon" href="videos/blanca.jpg" type="image/x-icon" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+
+    .background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .container {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      text-align: center;
+    }
+
+    .white-rose {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      overflow: hidden;
+      animation: float 3s ease-in-out infinite;
+      display: inline-block;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      transition: transform 0.3s;
+    }
+
+    .white-rose:hover {
+      transform: scale(1.05);
+    }
+
+    .white-rose img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+
+    .title {
+      position: absolute;
+      bottom: 10%;
+      width: 100%;
+      color: white;
+      font-size: 28px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      animation: fadeIn 2s forwards 1s;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fondo de imagen (rosa roja) -->
+  <img src="videos/roja.jpg" alt="Fondo rosa roja" class="background-image" />
+
+  <div class="container">
+    <!-- Imagen rosa blanca como botón -->
+    <a href="propuesta.html" class="white-rose" aria-label="Ver propuesta" target="_blank">
+      <img src="videos/blanca.jpg" alt="Rosa blanca" />
+    </a>
+
+    <div class="title">Tengo algo que decirte...</div>
+  </div>
+  
+</body>
+</html>
